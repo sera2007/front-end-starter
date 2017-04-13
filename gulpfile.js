@@ -1,6 +1,10 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
+var autoprefixerOptions = {
+    browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']
+};
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 var useref = require('gulp-useref');
@@ -11,6 +15,8 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('run-sequence');
+var pug = require('gulp-pug');
+
 // Development Tasks
 // -----------------
 
@@ -23,9 +29,28 @@ gulp.task('browserSync', function() {
   })
 })
 
+var pug = require('gulp-pug');
+
+gulp.task('pug', function buildHTML() {
+    return gulp.src('app/pug/*.pug')
+        .pipe(pug({
+            // Your options in here.
+        }))
+        .pipe(gulp.dest('app/'));
+});
+
+gulp.task('templates-watch', ['pug'], function (done) {
+    browserSync.reload();
+    done();
+});
+
+
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
+    .pipe(sourcemaps.write())
+    .pipe(autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest('app/css')) // Outputs it in the css folder
     .pipe(browserSync.reload({ // Reloading with Browser Sync
       stream: true
@@ -35,7 +60,9 @@ gulp.task('sass', function() {
 // Watchers
 gulp.task('watch', function() {
   gulp.watch('app/scss/**/*.scss', ['sass']);
+  gulp.watch('app/pug/*.pug', ['templates-watch']);
   gulp.watch('app/*.html', browserSync.reload);
+  gulp.watch('app/css/print.css', browserSync.reload);
   gulp.watch('app/js/**/*.js', browserSync.reload);
 })
 
@@ -78,8 +105,13 @@ gulp.task('copy-favicon', function() {
     return gulp.src('app/favicon.ico')
         .pipe(gulp.dest('dist'))
 })
-// Copying favicon
+// Copying print
 gulp.task('copy-css-files', function() {
+    return gulp.src('app/css/print.css')
+        .pipe(gulp.dest('dist/css'))
+})
+// Copying style
+gulp.task('copy-css-files2', function() {
     return gulp.src('app/css/style.css')
         .pipe(gulp.dest('dist/css'))
 })
@@ -108,7 +140,7 @@ gulp.task('build', function(callback) {
   runSequence(
     'clean:dist',
     'sass',
-    ['useref', 'images', 'fonts','copy-favicon','copy-css-files'],
+    ['useref', 'images', 'fonts','copy-favicon','copy-css-files','copy-css-files2'],
     callback
   )
 })
