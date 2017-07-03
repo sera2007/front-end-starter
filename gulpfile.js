@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var autoprefixerOptions = {
     browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']
@@ -15,7 +14,7 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('run-sequence');
-var pug = require('gulp-pug');
+//var pug = require('gulp-pug');
 var plumber = require('gulp-plumber');
 
 // Development Tasks
@@ -31,20 +30,18 @@ gulp.task('browserSync', function() {
 })
 
 // Pug compiling
-gulp.task('pug', function buildHTML() {
-    return gulp.src('app/pug/*.pug')
-        .pipe(plumber())
-        .pipe(pug({
-            // Your options in here.
-        }))
-        .pipe(gulp.dest('app/'));
-});
+// gulp.task('pug', function buildHTML() {
+//     return gulp.src('app/pug/*.pug')
+//         .pipe(plumber())
+//         .pipe(pug({pretty: true}))
+//         .pipe(gulp.dest('app/'));
+// });
 // Pug additional watcher
-gulp.task('pug-watch', ['pug'], function (done) {
-    browserSync.reload();
-    //console.log('pug reload');
-    done();
-});
+// gulp.task('pug-watch', ['pug'], function (done) {
+//     browserSync.reload();
+//     //console.log('pug reload');
+//     done();
+// });
 // SASS compiling
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
@@ -61,7 +58,7 @@ gulp.task('sass', function() {
 // Watchers
 gulp.task('watch', function() {
   gulp.watch('app/scss/**/*.scss', ['sass']);
-  gulp.watch('app/pug/*.pug', ['pug']);
+  //gulp.watch('app/pug/*.pug', ['pug']);
   gulp.watch('app/*.html', browserSync.reload);
   gulp.watch('app/css/print.css', browserSync.reload);
   gulp.watch('app/js/**/*.js', browserSync.reload);
@@ -131,10 +128,15 @@ gulp.task('clean:dist', function() {
 // Build Sequences
 // ---------------
 
+// gulp.task('default', function(callback) {
+//   runSequence(['pug','sass','browserSync'], 'watch',
+//     callback
+//   )
+// });
 gulp.task('default', function(callback) {
-  runSequence(['pug','sass','browserSync'], 'watch',
-    callback
-  )
+    runSequence(['sass','browserSync'], 'watch',
+        callback
+    )
 });
 
 gulp.task('build', function(callback) {
