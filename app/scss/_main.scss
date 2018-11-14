@@ -1,5 +1,27 @@
 /* GENERAL */
-.container{
-  margin: 0  auto;
-  width: 980px;
+.container {
+	margin: 0 auto;
+	width: 980px;
+}
+
+.response_table {
+	.row{
+		display: flex;
+		font-size: 14px;
+		padding: 5px 8px;
+		.col{
+			&.number{
+				width: 25%;
+			}
+			&.square{
+				width: 25%;
+			}
+			&.description{
+				width: 60%;
+			}
+		}
+		&:nth-child(odd){
+			background: #f5f5f5;
+		}
+	}
 }

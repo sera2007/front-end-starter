@@ -1,74 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SiteName</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <link rel="icon" type="image/png" href="favicon.ico">
-  <!--build:css css/critical.min.css -->
-  <link href="css/screen.css" rel="stylesheet" media="screen">
-  <!--endbuild -->
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>SiteName</title>
+	<meta name='description' content=''>
+	<meta name='keywords' content=''>
+	<link rel='icon' type='image/png' href='favicon.ico'>
+	<!--build:css css/critical.min.css -->
+	<link href='css/screen.css' rel='stylesheet' media='screen'>
+	<script src='js/common.js'></script>
+	<!--endbuild -->
 
-  <!--[if IE]>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
-  <![endif]-->
+	<!--[if IE]>
+	<script src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js'></script>
+	<![endif]-->
 </head>
 <body>
-<div id="o-wrapper" class="wrapper o-wrapper">
-  <header class="header">
-    <div class="container">
+<div id='o-wrapper' class='wrapper o-wrapper'>
+	<header class='header'>
+		<div class='container'>
 
-    </div>
-  </header>
-  <div class="content">
-    <div class="container">
-      Content
-    </div>
-  </div>
-  <footer class="footer">
-    <div class="container">
+		</div>
+	</header>
+	<div class='content'>
+		<div class='container'>
+			Content
+			<br>
+			<textarea name='numbers' cols='50' rows='20' id='numbers' placeholder='номера'></textarea>
+			<textarea name='square' cols='30' rows='20' placeholder='площі'></textarea>
+			<textarea name='description' cols='50' rows='20' placeholder='опис'></textarea>
+			<br>
+			<input type='submit' value='check'>
+			<br>
+			<br>
+			<div class='response_table'></div>
+			<div class='response'></div>
+		</div>
+	</div>
+	<footer class='footer'>
+		<div class='container'>
 
-    </div>
-  </footer>
+		</div>
+	</footer>
 </div>
 
-<nav id="c-menu--push-right" class="c-menu c-menu--push-right">
-  <button class="c-menu__close">&larr; Close Menu</button>
-  <ul class="c-menu__items">
-    <li class="c-menu__item"><a href="#" class="c-menu__link">Skateboards</a></li>
-    <li class="c-menu__item"><a href="#" class="c-menu__link">Mens</a></li>
-    <li class="c-menu__item"><a href="#" class="c-menu__link">Womens</a></li>
-    <li class="c-menu__item"><a href="#" class="c-menu__link">Kids</a></li>
-    <li class="c-menu__item"><a href="#" class="c-menu__link">Accessories</a></li>
-    <li class="c-menu__item"><a href="#" class="c-menu__link">Contact Us</a></li>
-  </ul>
+<nav id='c-menu--push-right' class='c-menu c-menu--push-right'>
+	<button class='c-menu__close'>&larr; Close Menu</button>
+	<ul class='c-menu__items'>
+		<li class='c-menu__item'><a href='#' class='c-menu__link'>Skateboards</a></li>
+		<li class='c-menu__item'><a href='#' class='c-menu__link'>Mens</a></li>
+		<li class='c-menu__item'><a href='#' class='c-menu__link'>Womens</a></li>
+		<li class='c-menu__item'><a href='#' class='c-menu__link'>Kids</a></li>
+		<li class='c-menu__item'><a href='#' class='c-menu__link'>Accessories</a></li>
+		<li class='c-menu__item'><a href='#' class='c-menu__link'>Contact Us</a></li>
+	</ul>
 </nav><!-- /c-menu push-right -->
 
-<div id="c-mask" class="c-mask"></div>
+<div id='c-mask' class='c-mask'></div>
 <!--build:css css/app.min.css -->
-<link rel="stylesheet" href="css/jquery.fancybox.min.css" media="screen" >
-<link rel="stylesheet" type="text/css" href="css/slick.css"/>
-<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
-<link rel="stylesheet" type="text/css" href="css/hamburgers.css"/>
-<link rel="stylesheet" type="text/css" href="css/hover-min.css"/>
-<link rel="stylesheet" type="text/css" href="css/animate.css"/>
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+<link rel='stylesheet' href='css/jquery.fancybox.min.css' media='screen'>
+<link rel='stylesheet' type='text/css' href='css/slick.css'/>
+<link rel='stylesheet' type='text/css' href='css/slick-theme.css'/>
+<link rel='stylesheet' type='text/css' href='css/hamburgers.css'/>
+<link rel='stylesheet' type='text/css' href='css/hover-min.css'/>
+<link rel='stylesheet' type='text/css' href='css/animate.css'/>
+<link rel='stylesheet' type='text/css' href='css/font-awesome.min.css'/>
 <!--endbuild -->
-<link href="css/style.css" rel="stylesheet" media="screen">
+<link href='css/style.css' rel='stylesheet' media='screen'>
 
 <!--<link href='https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700,900&subset=cyrillic' rel='stylesheet' type='text/css'>-->
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 <!--<script src="js/libs/jquery-3.2.1.slim.min.js"></script>-->
 <!--build:js js/app.min.js -->
-<script src="js/libs/jquery.fancybox.min.js"></script>
-<script src="js/libs/modernizr.custom.js"></script>
-<script type="text/javascript" src="js/libs/slick.min.js"></script>
-<script src="js/libs/wow.min.js"></script>
-<script src="js/libs/menu.js"></script>
-<script src="js/common.js"></script>
+<script src='js/libs/jquery.fancybox.min.js'></script>
+<script src='js/libs/modernizr.custom.js'></script>
+<script type='text/javascript' src='js/libs/slick.min.js'></script>
+<script src='js/libs/wow.min.js'></script>
+<script src='js/libs/menu.js'></script>
+<script src='js/common.js'></script>
 <!--endbuild -->
 </body>
 
